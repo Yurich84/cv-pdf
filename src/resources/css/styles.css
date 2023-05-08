@@ -1,0 +1,21 @@
+* {
+    font-family: "DejaVu Sans", serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+}
+.main_table {
+    margin: 30px;
+    width: calc(100% - 60px);
+    border: #CCCCCC solid 1px;
+}
+.left-menu {
+    width: 220px;
+}

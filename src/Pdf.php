@@ -5,7 +5,7 @@ namespace CvPdf;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class Main
+class Pdf
 {
     private Dompdf $dompdf;
     private string $file_name;
@@ -24,7 +24,8 @@ class Main
     
     private function render()
     {
-        $this->dompdf->loadHtmlFile(__DIR__ . "/index.html");
+        $html = (new Html())->render();
+        $this->dompdf->loadHtml($html);
         $this->dompdf->render();
     }
     

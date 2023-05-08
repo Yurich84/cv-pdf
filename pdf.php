@@ -2,5 +2,5 @@
 
 require 'vendor/autoload.php';
 
-echo (new \CvPdf\Html())->render();
+(new \CvPdf\Pdf())->run();
 
