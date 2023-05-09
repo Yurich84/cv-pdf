@@ -11,10 +11,10 @@ class Experience
              'from' => '2022',
              'to' => 'now',
              'description' => '
-             - web app and crm development
-            - setting up ci/cd, git-flow, testing, code-style, security
-            - working with mailgun, ms graph
-            - managed queues, scheduler tasks',
+             - web app and crm development<br>
+            - setting up ci/cd, git-flow, testing, code-style, security<br>
+            - working with mailgun, ms graph<br>
+            - managed queues, scheduler tasks<br>',
          ],
          [
              'role' => 'full stack developer, tech lead',
@@ -22,11 +22,11 @@ class Experience
              'from' => '2020',
              'to' => '2022',
              'description' => '
-              developing scaled crm on microservice architecture
-              - developing architecture of db and app (front+back)
-              - mentoring and consulting
-              - gathering (interviewing) the team
-              - working with stripe, paddle, twilio, sendgrid - open-source contributing',
+              developing scaled crm on microservice architecture<br>
+              - developing architecture of db and app (front+back)<br>
+              - mentoring and consulting<br>
+              - gathering (interviewing) the team<br>
+              - working with stripe, paddle, twilio, sendgrid - open-source contributing<br>',
          ],
          [
              'role' => 'full stack developer',
@@ -34,10 +34,10 @@ class Experience
              'from' => '2019',
              'to' => '2020',
              'description' => '
-             - developing crm as pwa
-             - successfully delivered spa with implementation 3rd party api.
-             - work closely in the team
-             - communication with foreign clients, transforming the client’s thoughts into the business logic of the application',
+             - developing crm as pwa<br>
+             - successfully delivered spa with implementation 3rd party api<br>
+             - work closely in the team<br>
+             - communication with foreign clients, transforming the client’s thoughts into the business logic of the application<br>',
          ],
          [
              'role' => 'web developer',
@@ -45,9 +45,9 @@ class Experience
              'from' => '2013',
              'to' => '2019',
              'description' => '
-            involved in the full cycle of web application development:
-            - discussion and thinking through business logic -> technology selection -> application and database architecture -> backend development -> layout and frontend development -> search engine optimization -> support.
-            - during this work, i’ve created dozens web applications and integrated various apis',
+            involved in the full cycle of web application development:<br>
+            - discussion and thinking through business logic -> technology selection -> application and database architecture -> backend development -> layout and frontend development -> search engine optimization -> support.<br>
+            - during this work, i’ve created dozens web applications and integrated various apis<br>',
          ],
     ];
 }

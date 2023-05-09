@@ -6,14 +6,18 @@
 </head>
 <body>
     <table class="main_table">
-        <tr valign="top">
+        <tr class="head">
             <td>
                 <img src="./src/resources/img/my_photo.jpg" width="220">
             </td>
             <td>
-                <h1>YURII TYMCHUCK</h1>
-                <h3>Senior Full-Stack Developer</h3>
-                <h4>Php (Laravel + VueJS)</h4>
+                <div class="title">
+                    <div>
+                        <h4 >YURII TYMCHUCK</h4>
+                        <h3>Senior Full-Stack Developer</h3>
+                        <h4>Php (Laravel + VueJS)</h4>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr valign="top">
@@ -41,6 +45,7 @@
                         @endforeach
                     </div>
                     <div class="skills__stack">
+                        <h5>All Skills</h5>
                         @foreach($skills_main as $skill)
                             <div>{{ $skill }}</div>
                         @endforeach
@@ -53,8 +58,9 @@
                     </div>
                 </div>
             </td>
-            <td>
+            <td class="main_content">
                 <div class="experience">
+                    <h3>Experience</h3>
                     @foreach($experience as $item)
                         <div class="experience__block main-block">
                             <div class="main-block__date">{{ $item['from'] }} - {{ $item['to'] }}</div>
@@ -63,13 +69,14 @@
                                 <div class="main-block__role">{{ $item['role'] }}</div>
                                 <div class="main-block__company">{{ $item['company'] }}</div>
                                 <div class="main-block__description">
-                                    {{ $item['description'] }}
+                                    {!! $item['description'] !!}
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
                 <div class="education">
+                    <h3>Education</h3>
                     @foreach($education as $item)
                         <div class="education__block main-block">
                             <div class="main-block__date">{{ $item['from'] }} - {{ $item['to'] }}</div>

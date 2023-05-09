@@ -6,16 +6,16 @@ class Education
 {
     const VALUES = [
         [
-            'role' => 'bachelor, mathematics and physics',
+            'role' => 'Bachelor, Mathematics and Physics',
             'from' => '2002',
             'to' => '2007',
-            'description' => 'nizhyn state gogol pedagogical university.',
+            'description' => 'Nizhyn state gogol pedagogical university.',
         ],
         [
-            'role' => 'bachelor of engineering, computer systems and network',
+            'role' => 'Bachelor of engineering, computer systems and network',
             'from' => '2010',
             'to' => '2013',
-            'description' => 'national technical university of ukraine “kyiv polytechnic institute”',
+            'description' => 'National technical university of ukraine “kyiv polytechnic institute”',
         ],
     ];
 }

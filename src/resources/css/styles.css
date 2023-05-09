@@ -1,6 +1,7 @@
 * {
     font-family: "DejaVu Sans", serif;
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 12px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,8 +15,119 @@ table {
 .main_table {
     margin: 30px;
     width: 720px;
-    border: #CCCCCC solid 1px;
+    border-collapse: collapse;
 }
+
+.main_content {
+    padding: 10px 0 0 20px;
+}
+
+.head {
+    background-color: #3B3B3C;
+    color: white;
+}
+
 .left-menu {
-    width: 220px;
+    width: 200px;
+    background-color: #DAE5F5;
+    padding: 10px
+}
+
+.title {
+    margin-top: 40px;
+}
+
+.title > * {
+    text-align: center;
+}
+
+/*
+Main
+ */
+
+.main-block {
+    margin-bottom: 10px;
+}
+
+.main-block__date {
+    font-weight: bold;
+    font-size: 15px;
+    min-width: 90px;
+}
+
+.main-block__delimiter {
+    margin: 0 20px;
+    border-left: 2px solid #ccc;
+}
+
+.main-block__role {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.main-block__company {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.main-block__description {
+
+}
+
+/*
+Menu
+ */
+
+.menu-block {
+    margin-bottom: 10px;
+}
+
+.menu-block h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contacts div,
+.languages div,
+.skills div {
+    margin-bottom: 5px;
+}
+
+.contacts__ln,
+.contacts__dev,
+.contacts__github {
+    text-decoration: underline;
+}
+
+.languages div:first-of-type,
+.skills__main-stack div:first-of-type {
+    margin-top: 0;
+}
+
+.skills__stack div:last-of-type {
+    margin-bottom: 0;
+}
+
+/*
+Headers
+ */
+
+h1, h2, h3, h4 {
+    line-height: 24px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
