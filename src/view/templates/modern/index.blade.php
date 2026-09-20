@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>{{ $profile::NAME }} — CV</title>
+    <title>{{ $profile['name'] }} — CV</title>
     <style>{!! $css !!}</style>
 </head>
 <body>
@@ -10,9 +10,9 @@
 <div class="header">
     @if($photo)<img class="header__photo" src="{{ $photo }}" alt="">@endif
     <div class="header__title">
-        <div class="header__name">{{ mb_strtoupper($profile::NAME) }}</div>
-        <div class="header__role">{{ $profile::TITLE }}</div>
-        <div class="header__location">{{ $profile::LOCATION }}</div>
+        <div class="header__name">{{ mb_strtoupper($profile['name']) }}</div>
+        <div class="header__role">{{ $profile['title'] }}</div>
+        <div class="header__location">{{ $profile['location'] }}</div>
     </div>
 </div>
 
@@ -49,17 +49,17 @@
         <div class="section__title">Skills</div>
         <div class="section__rule"></div>
         <div class="skills__top">
-            @foreach($skills_top as $skill)
+            @foreach($skills->top() as $skill)
                 <div>{{ $skill }}</div>
             @endforeach
         </div>
         <div class="skills__list">
-            @foreach($skills_groups as $group => $items)
+            @foreach($skills->groups() as $group => $items)
                 <div class="skills__group-title">{{ $group }}</div>
                 <div>{{ implode(', ', $items) }}</div>
             @endforeach
             <div class="skills__group-title">Familiar with</div>
-            <div>{{ implode(', ', $skills_familiar) }}</div>
+            <div>{{ implode(', ', $skills->familiar()) }}</div>
         </div>
     </div>
 

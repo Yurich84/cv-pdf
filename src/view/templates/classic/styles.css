@@ -1,11 +1,14 @@
 /* --------------------------------------------------------------------------
- |  classic — одна колонка, ATS-friendly, усе на одну сторінку.
+ |  classic — одна колонка, ATS-friendly, розрахований на дві сторінки A4.
  |  Без фонових блоків і багатоколонкових секцій, крім списку навичок:
  |  такий макет коректно парситься роботами вакансійних майданчиків.
+ |
+ |  Розміри підібрані під дві сторінки: базовий кегль 9.2pt, інтерліньяж 1.28
+ |  і поля 30pt дають звичний «читабельний» ритм, а не стиснутий друк.
  * ------------------------------------------------------------------------ */
 
 @page {
-    margin: 22pt;
+    margin: 25pt 25pt;
 }
 
 /*
@@ -14,8 +17,8 @@
  */
 body, div, p, table, tr, td, th, ul, ol, li, h1, h2, h3, h4, h5, h6 {
     font-family: 'DejaVu Sans', sans-serif;
-    font-size: 7.2pt;
-    line-height: 1.16;
+    font-size: 9.2pt;
+    line-height: 1.28;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -42,14 +45,18 @@ a {
 
 /* Шапка ----------------------------------------------------------------- */
 
+.header {
+    margin-bottom: 4pt;
+}
+
 .header__photo {
-    width: 58pt;
+    width: 86pt;
     vertical-align: top;
-    padding-right: 10pt;
+    padding-right: 14pt;
 }
 
 .header__photo img {
-    width: 54pt;
+    width: 72pt;
 }
 
 .header__main {
@@ -57,38 +64,42 @@ a {
 }
 
 .header__name {
-    font-size: 15pt;
+    font-size: 19pt;
+    line-height: 1.15;
     font-weight: bold;
     color: #4f3fd6;
     text-align: right;
-    margin-bottom: 1pt;
+    margin-bottom: 3pt;
 }
 
 .header__role {
-    font-size: 11pt;
+    font-size: 12.5pt;
+    line-height: 1.25;
     font-weight: bold;
     text-align: right;
-    margin-bottom: 1pt;
+    margin-bottom: 4pt;
 }
 
 .header__contacts {
-    font-size: 6.9pt;
+    font-size: 8.4pt;
+    line-height: 1.5;
     text-align: right;
 }
 
 /* Секції ---------------------------------------------------------------- */
 
 .section {
-    margin-top: 5pt;
+    margin-top: 9.5pt;
 }
 
 .section__title {
-    font-size: 9pt;
+    font-size: 11pt;
+    letter-spacing: 0.6pt;
     font-weight: bold;
     color: #4f3fd6;
     border-bottom: 1.2pt solid #4f3fd6;
-    padding-bottom: 0.5pt;
-    margin-bottom: 3pt;
+    padding-bottom: 2pt;
+    margin-bottom: 7pt;
 }
 
 .summary {
@@ -97,45 +108,65 @@ a {
 
 /* Навички та мови ------------------------------------------------------- */
 
+/*
+ | Чотири колонки замість шести: при кеглі 9.2pt довші назви («Composition
+ | API», «Elasticsearch») у вужчій колонці переносяться і ламають ритм.
+ | Кількість колонок задається і тут, і в index.blade.php — міняти разом.
+ */
 .skills td {
-    width: 16.6%;
+    width: 25%;
     vertical-align: top;
-    padding-right: 4pt;
+    padding-right: 10pt;
 }
 
 .skills div {
-    margin-bottom: 0.5pt;
+    margin-bottom: 2pt;
 }
 
 .languages span {
-    margin-right: 14pt;
+    margin-right: 22pt;
 }
 
 /* Досвід ---------------------------------------------------------------- */
 
+/*
+ | Запис досвіду не рветься між сторінками — переноситься цілком.
+ |
+ | Платою за це є поріг: якщо запис не влазить у залишок сторінки, він іде
+ | на наступну, а знизу лишається порожнє поле. Зараз під першим записом
+ | запас ~82pt (≈3 зайвих рядки). Якщо досвід розростеться і зʼявиться
+ | діра — місце над ним беруть зі SKILLS: columns(4) → columns(5) складає
+ | список у 6 рядків замість 8. Ширину комірки в .skills td міняти разом.
+ */
 .entry {
-    margin-bottom: 4pt;
+    margin-bottom: 7pt;
     page-break-inside: avoid;
 }
 
+/* Заголовок не розривається: назва посади і дати завжди лишаються поруч. */
 .entry__head {
-    margin-bottom: 0.5pt;
+    margin-bottom: 3pt;
+    page-break-inside: avoid;
 }
 
 .entry__title {
+    font-size: 10pt;
     font-weight: bold;
     vertical-align: top;
 }
 
+/* 36% — щоб «Remote, Mar 2024 to Present» лишалося в один рядок. */
 .entry__meta {
     font-weight: bold;
     text-align: right;
     vertical-align: top;
-    width: 30%;
+    width: 36%;
 }
 
 .entry__line {
-    margin-bottom: 0.5pt;
+    margin-bottom: 1.5pt;
+    padding-left: 10pt;
+    text-indent: -10pt;
 }
 
 .entry__text {

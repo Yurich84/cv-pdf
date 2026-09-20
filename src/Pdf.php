@@ -15,19 +15,24 @@ class Pdf
     private Dompdf $dompdf;
     private Html $html;
     private string $template;
+    private string $version;
     private string $fileName;
 
-    public function __construct(?string $template = null, ?string $fileName = null)
+    public function __construct(?string $template = null, ?string $version = null, ?string $fileName = null)
     {
-        $this->html = new Html($template);
+        $this->html = new Html($template, $version);
         $this->template = $this->html->template();
+        $this->version = $this->html->version();
 
         $this->dompdf = $this->makeDompdf();
 
         $this->fileName = $fileName ?: sprintf(
-            '%s/pdf/CV_%s_%s.pdf',
+            '%s/pdf/CV_%s_%s%s.pdf',
             dirname(__DIR__),
             $this->template,
+            // Версію в імені згадуємо, тільки якщо вона не типова:
+            // інакше кожен файл тягне зайве «_default».
+            $this->version === Cv::DEFAULT ? '' : $this->version . '_',
             date('d.m.y_His')
         );
     }

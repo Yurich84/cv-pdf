@@ -1,0 +1,215 @@
+{
+    "label": "Базовий набір даних — правиться під вакансію",
+    "profile": {
+        "name": "Yurii Tymchuk",
+        "title": "Senior Laravel + Vue.js Developer, TechLead",
+        "photo": "my_photo.jpg",
+        "location": "Santa Cruz de Tenerife, Canary Islands 38006, Spain",
+        "email": "Yurich84@gmail.com",
+        "phone": "+34 613 46 46 99",
+        "summary": "Full-stack engineer and tech lead with 10+ years of designing, building and evolving production systems on Laravel and Vue. I look at the system around a feature, not only at the feature: how it is structured, tested, deployed, monitored and maintained by the team. I automate everything that can be automated — deployments, routine engineering work, quality gates — so the whole team moves faster, not just me. With legacy I prefer incremental migration over rewrites: no code freeze, no big bang, development never stops. I work with AI the same way I work with any external dependency — structured output, schema validation and a controlled pipeline instead of trusting a model to behave. Comfortable owning a product end to end, from database design and architecture to CI/CD, production troubleshooting and the people doing the work."
+    },
+    "contacts": [
+        {
+            "icon": "☎",
+            "text": "+34 613 46 46 99",
+            "url": "tel:+34613464699"
+        },
+        {
+            "icon": "✉",
+            "text": "Yurich84@gmail.com",
+            "url": "mailto:Yurich84@gmail.com"
+        },
+        {
+            "icon": "✈",
+            "text": "Yurich84",
+            "url": "https://t.me/Yurich84"
+        },
+        {
+            "icon": "⌂",
+            "text": "Spain, Santa-Cruz-de-Tenerife",
+            "url": null
+        }
+    ],
+    "socials": [
+        {
+            "icon": "●",
+            "label": "LinkedIn",
+            "text": "linkedin.com/in/yuriy-timchuk",
+            "url": "https://linkedin.com/in/yuriy-timchuk"
+        },
+        {
+            "icon": "●",
+            "label": "Web-site",
+            "text": "yurich84.github.io",
+            "url": "https://yurich84.github.io"
+        },
+        {
+            "icon": "●",
+            "label": "Github",
+            "text": "github.com/Yurich84",
+            "url": "https://github.com/Yurich84"
+        },
+        {
+            "icon": "●",
+            "label": "Dev.to",
+            "text": "dev.to/yurich84",
+            "url": "https://dev.to/yurich84"
+        }
+    ],
+    "experience": [
+        {
+            "role": "Technical lead",
+            "company": "CheItGroup",
+            "location": "Remote",
+            "from": "Mar 2024",
+            "to": "Present",
+            "items": [
+                "Own the key technical decisions and the architecture direction, and align the team around common goals",
+                "Responsible for release strategy and production health — rollout, rollback, bottlenecks between Nginx, PHP-FPM, Laravel, queues and external services",
+                "Run the AI infrastructure of the platform: self-hosted models behind vLLM and LiteLLM, document processing and OCR pipelines, structured output with schema validation",
+                "Responsible search and AI matching, parsing, and population data with complecs OCR and AI flow",
+                "Define engineering standards — linters, code style, review rules, agents and workflows — which lets AI take over a large share of routine work and speeds it up 3–4 times",
+                "Own the QA strategy: test coverage matrix for business-critical flows",
+                "Drive the gradual Vue 2 to Vue 3 migration with the Strangler Fig approach, without a code freeze",
+                "Mentor the team, improve workflows and processes, and facilitate meetings that end with decisions"
+            ]
+        },
+        {
+            "role": "Full-stack engineer",
+            "company": "Interactivated Solutions",
+            "location": "Remote",
+            "from": "Feb 2022",
+            "to": "Mar 2024",
+            "items": [
+                "Developed and maintained a CRM for healthcare providers covering caregiver services, invoicing, claims and payment processes",
+                "Responsible for the Accounts Receivable domain, including a dashboard that gave the company control over its financial flow",
+                "Implemented data sharing between healthcare providers and insurance companies using the 837 and 835 standarts",
+                "Owned the engineering setup of the project: CI/CD, git-flow, testing, code style and security",
+                "Integrated and supported external services — Mailgun, MS Graph — together with queued jobs and scheduled tasks",
+                "Worked with the team on a new claims system and on the interaction between clients, caregivers and companies"
+            ]
+        },
+        {
+            "role": "Backend developer",
+            "company": "CheItGroup",
+            "location": "Chernihiv",
+            "from": "Apr 2020",
+            "to": "Jan 2022",
+            "items": [
+                "Responsible for a separate service of the Rocken CRM ecosystem that gave candidates and companies access to their own profiles, built on a microservice architecture in Docker on DigitalOcean; Rocken is now among the top 3 job search sites in Switzerland",
+                "Designed the database and application architecture, backend and frontend",
+                "Set up CI/CD with zero-downtime deployment and introduced GitFlow as the team workflow",
+                "Gathered and interviewed the team, mentored developers and consulted on technical decisions",
+                "Delivered a standalone CRM for a network of Porsche showrooms in Switzerland — from the owner's idea to structure, UX and release",
+                "Contributed to open source"
+            ]
+        },
+        {
+            "role": "Full-stack developer",
+            "company": "Skyup studio",
+            "location": "Remote",
+            "from": "Aug 2019",
+            "to": "Apr 2020",
+            "summary": "Developed a large CRM and a PWA. Delivered an SPA built around third-party APIs, and was responsible for its frontend architecture while working closely with the team.",
+            "items": []
+        },
+        {
+            "role": "Freelance web developer",
+            "company": "",
+            "location": "Remote",
+            "from": "Apr 2013",
+            "to": "Jul 2019",
+            "items": [
+                "Built and supported online stores on various CMS and PHP frameworks, from small catalogues to shops with thousands of products",
+                "Responsible for the full cycle of each project: requirements, data structure, backend, frontend, deployment and further support",
+                "Integrated payment providers, delivery services, and import and export of product data",
+                "Worked directly with business owners, translated their ideas into requirements and advised on technical options",
+                "Maintained and refactored inherited codebases, and migrated legacy projects to newer platforms"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelor of Engineering, Computer Systems and Network",
+            "school": "Kyiv Polytechnic Institute",
+            "location": "Kyiv",
+            "from": "Jan 2010",
+            "to": "Jan 2013"
+        },
+        {
+            "degree": "Master of Mathematics",
+            "school": "Nizhyn Gogol State University",
+            "location": "Nizhyn",
+            "from": "Jan 2002",
+            "to": "Jan 2007"
+        }
+    ],
+    "languages": [
+        {
+            "name": "Ukrainian",
+            "level": "Native"
+        },
+        {
+            "name": "English",
+            "level": "Upper-Intermediate"
+        },
+        {
+            "name": "Spanish",
+            "level": "Beginner"
+        }
+    ],
+    "skills": {
+        "top": [
+            "Laravel - 8 Years",
+            "Vue.js - 5 Years",
+            "RDBMS - 10 Years"
+        ],
+        "groups": {
+            "Backend": [
+                "Laravel",
+                "PHP",
+                "Yii2",
+                "Symfony",
+                "SOLID"
+            ],
+            "Frontend": [
+                "Vue 3",
+                "Nuxt",
+                "Vuex",
+                "Pinia",
+                "Composition API",
+                "React",
+                "JavaScript",
+                "Tailwind",
+                "SASS",
+                "Webpack",
+                "Vite"
+            ],
+            "AI": [
+                "AI integration",
+                "LLM",
+                "Claude",
+                "Codex"
+            ],
+            "Infrastructure": [
+                "Docker",
+                "Docker Swarm",
+                "Nginx",
+                "GitLab CI/CD",
+                "Git"
+            ],
+            "Data": [
+                "MySQL",
+                "PostgreSQL",
+                "MongoDB",
+                "Redis",
+                "Elasticsearch"
+            ]
+        },
+        "familiar": [
+            "Node.js",
+            "Python"
+        ]
+    }
+}

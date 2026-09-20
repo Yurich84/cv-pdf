@@ -12,11 +12,11 @@ namespace CvPdf;
  */
 class Template
 {
-    const DEFAULT = 'modern';
+    const DEFAULT = 'classic';
 
     const AVAILABLE = [
-        'modern' => 'Дві колонки, фото, темна шапка — як у друкованому CV',
-        'classic' => 'Одна колонка, ATS-friendly — під автоматичний парсинг вакансій',
+        'classic' => 'Одна колонка на дві сторінки, ATS-friendly — під автоматичний парсинг вакансій',
+        'modern' => 'Дві колонки, фото, темна шапка, портфоліо з картинками',
     ];
 
     public static function resolve(?string $name): string

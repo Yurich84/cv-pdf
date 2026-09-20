@@ -2,22 +2,18 @@
 
 namespace CvPdf;
 
-use CvPdf\Constants\Education;
-use CvPdf\Constants\Experience;
-use CvPdf\Constants\Language;
-use CvPdf\Constants\Portfolio;
-use CvPdf\Constants\Profile;
-use CvPdf\Constants\Skill;
 use Jenssegers\Blade\Blade;
 
 class Html
 {
     private Blade $blade;
     private string $template;
+    private Cv $cv;
 
-    public function __construct(?string $template = null)
+    public function __construct(?string $template = null, ?string $version = null)
     {
         $this->template = Template::resolve($template);
+        $this->cv = Cv::load($version);
 
         $cache = __DIR__ . '/view/cache';
 
@@ -35,28 +31,31 @@ class Html
      */
     public function render(bool $withPortfolio = true): string
     {
+        $profile = $this->cv->profile();
+
         return $this->blade->render('index', [
             'css' => $this->css(),
-            'profile' => Profile::class,
-            'photo' => $this->image(Profile::PHOTO),
-            'summary' => Profile::SUMMARY,
-            'contacts' => Profile::CONTACTS,
-            'socials' => Profile::SOCIALS,
-            'experience' => Experience::VALUES,
-            'education' => Education::VALUES,
-            'languages' => Language::VALUES,
+            'profile' => $profile,
+            'photo' => $this->image($profile['photo']),
+            'summary' => $profile['summary'],
+            'contacts' => $this->cv->contacts(),
+            'socials' => $this->cv->socials(),
+            'experience' => $this->cv->experience(),
+            'education' => $this->cv->education(),
+            'languages' => $this->cv->languages(),
             'portfolio' => $withPortfolio ? $this->portfolio() : [],
-            'skills_top' => Skill::TOP,
-            'skills_groups' => Skill::GROUPS,
-            'skills_flat' => Skill::flat(),
-            'skill' => Skill::class,
-            'skills_familiar' => Skill::FAMILIAR,
+            'skills' => $this->cv->skills(),
         ]);
     }
 
     public function template(): string
     {
         return $this->template;
+    }
+
+    public function version(): string
+    {
+        return $this->cv->version();
     }
 
     /**
@@ -74,6 +73,10 @@ class Html
      */
     private function image(string $relativePath): string
     {
+        if ($relativePath === '') {
+            return '';
+        }
+
         $path = __DIR__ . '/resources/img/' . $relativePath;
 
         if (! is_file($path)) {
@@ -96,6 +99,6 @@ class Html
             $project['image'] = $this->image($project['image']);
 
             return $project;
-        }, Portfolio::VALUES);
+        }, $this->cv->portfolio());
     }
 }

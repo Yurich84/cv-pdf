@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>{{ $profile::NAME }} — CV</title>
+    <title>{{ $profile['name'] }} — CV</title>
     <style>{!! $css !!}</style>
 </head>
 <body>
 
-<table>
+<table class="header">
     <tr>
         <td class="header__photo">
             @if($photo)<img src="{{ $photo }}" alt="">@endif
         </td>
         <td class="header__main">
-            <div class="header__name">{{ mb_strtoupper($profile::NAME) }}</div>
-            <div class="header__role">{{ mb_strtoupper($profile::TITLE) }}</div>
+            <div class="header__name">{{ mb_strtoupper($profile['name']) }}</div>
+            <div class="header__role">{{ mb_strtoupper($profile['title']) }}</div>
+            {{-- Контакти і соцмережі — окремими рядками: одним рядком вони не
+                 вміщаються і dompdf рве їх посеред номера телефону. --}}
             <div class="header__contacts">
-                {{ $profile::LOCATION }} |
-                <a href="mailto:{{ $profile::EMAIL }}">{{ $profile::EMAIL }}</a> |
-                {{ $profile::PHONE }} |
+                {{ $profile['location'] }} |
+                <a href="mailto:{{ $profile['email'] }}">{{ $profile['email'] }}</a> |
+                {{-- нерозривні пробіли, щоб номер не рвався між групами цифр --}}
+                {{ str_replace(' ', "\u{00A0}", $profile['phone']) }}
+            </div>
+            <div class="header__contacts">
                 @foreach($socials as $social)
                     <a href="{{ $social['url'] }}">{{ $social['label'] }}</a>@if(!$loop->last) | @endif
                 @endforeach
@@ -36,7 +41,7 @@
     <div class="section__title">SKILLS</div>
     <table class="skills">
         <tr>
-            @foreach($skill::columns(6) as $column)
+            @foreach($skills->columns(4) as $column)
                 <td>
                     @foreach($column as $item)
                         <div>• {{ $item }}</div>
