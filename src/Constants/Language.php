@@ -6,12 +6,8 @@ class Language
 {
     const VALUES = [
         [
-            'name' => 'Ukraine',
+            'name' => 'Ukrainian',
             'level' => 'Native',
-        ],
-        [
-            'name' => 'Russian',
-            'level' => 'Fluent',
         ],
         [
             'name' => 'English',

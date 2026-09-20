@@ -1,21 +1,23 @@
 <?php
 
-namespace cvpdf\constants;
+namespace CvPdf\Constants;
 
 class Education
 {
     const VALUES = [
         [
-            'role' => 'Bachelor, Mathematics and Physics',
-            'from' => '2002',
-            'to' => '2007',
-            'description' => 'Nizhyn state gogol pedagogical university.',
+            'degree' => 'Bachelor of Engineering, Computer Systems and Network',
+            'school' => 'Kyiv Polytechnic Institute',
+            'location' => 'Kyiv',
+            'from' => 'Jan 2010',
+            'to' => 'Jan 2013',
         ],
         [
-            'role' => 'Bachelor of engineering, computer systems and network',
-            'from' => '2010',
-            'to' => '2013',
-            'description' => 'National technical university of ukraine “kyiv polytechnic institute”',
+            'degree' => 'Master of Mathematics',
+            'school' => 'Nizhyn Gogol State University',
+            'location' => 'Nizhyn',
+            'from' => 'Jan 2002',
+            'to' => 'Jan 2007',
         ],
     ];
 }

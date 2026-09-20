@@ -1,0 +1,295 @@
+/* --------------------------------------------------------------------------
+ |  modern — дві колонки, темна шапка з фото, синя ліва смуга.
+ |
+ |  Верстка розрахована на dompdf, тому:
+ |    * flexbox/grid не використовуються — dompdf їх не підтримує;
+ |    * ліва смуга — position: fixed, бо тільки fixed повторюється
+ |      на кожній сторінці PDF;
+ |    * шапка й сайдбар — position: absolute, бо абсолюти малюються
+ |      тільки на своїй сторінці (тобто на першій) і поверх смуги;
+ |    * основна колонка — звичайний потік із margin-left, тому вона
+ |      сама переноситься на наступні сторінки.
+ * ------------------------------------------------------------------------ */
+
+@page {
+    margin: 0;
+}
+
+* {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8pt;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #2b2b2b;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+/* Каркас сторінки ------------------------------------------------------- */
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 595pt;
+    height: 170pt;
+    background-color: #3b3b3c;
+    color: #ffffff;
+}
+
+.header__photo {
+    position: absolute;
+    top: 14pt;
+    left: 20pt;
+    width: 138pt;
+}
+
+.header__title {
+    margin-left: 190pt;
+    padding: 40pt 26pt 0 16pt;
+    text-align: center;
+}
+
+.header__name {
+    font-size: 19pt;
+    font-weight: bold;
+    letter-spacing: 4pt;
+    margin-bottom: 9pt;
+}
+
+.header__role {
+    font-size: 10pt;
+    letter-spacing: 1.6pt;
+    color: #cdd6e2;
+    margin-bottom: 7pt;
+}
+
+.header__location {
+    color: #9aa5b4;
+}
+
+/*
+ | Сайдбар сам себе фарбує: на першій сторінці він накриває всю колонку
+ | під шапкою. На наступних сторінках резюме смугу домальовує Pdf.php
+ | через page_script — так вона не потрапляє на сторінки портфоліо.
+ */
+.sidebar {
+    position: absolute;
+    top: 170pt;
+    left: 0;
+    /* dompdf не застосовує box-sizing до абсолютів: 156 + 20 + 14 = 190pt */
+    width: 156pt;
+    height: 690pt;
+    padding: 16pt 14pt 0 20pt;
+    background-color: #dae5f5;
+}
+
+.content {
+    margin-left: 190pt;
+    padding: 170pt 26pt 12pt 16pt;
+}
+
+/* Заголовки секцій ------------------------------------------------------ */
+
+.section {
+    margin-bottom: 9pt;
+}
+
+.section__title {
+    font-size: 10.5pt;
+    letter-spacing: 1.5pt;
+    color: #3b3b3c;
+    text-transform: uppercase;
+}
+
+.section__rule {
+    border-bottom: 0.8pt solid #3b3b3c;
+    margin: 3pt 0 7pt 0;
+}
+
+.sidebar .section {
+    width: 156pt;
+}
+
+.sidebar .section__rule {
+    border-bottom-color: #8a9bb5;
+}
+
+/* Сайдбар --------------------------------------------------------------- */
+
+.contact__icon {
+    width: 13pt;
+    color: #4a5a72;
+    vertical-align: top;
+    padding-bottom: 3pt;
+}
+
+.contact__text {
+    vertical-align: top;
+    padding-bottom: 3pt;
+}
+
+.lang {
+    margin-bottom: 3pt;
+}
+
+.lang__name {
+    font-weight: bold;
+}
+
+.skills__top div {
+    font-size: 9pt;
+    margin-bottom: 3pt;
+}
+
+.skills__group-title {
+    font-weight: bold;
+    margin: 7pt 0 1pt 0;
+    color: #3b3b3c;
+}
+
+.skills__list {
+    color: #33404f;
+}
+
+/* Досвід і освіта ------------------------------------------------------- */
+
+.summary {
+    text-align: justify;
+}
+
+.item {
+    width: 100%;
+    margin-bottom: 8pt;
+}
+
+.item__date {
+    width: 58pt;
+    font-weight: bold;
+    color: #5a6a80;
+    vertical-align: top;
+}
+
+.item__body {
+    padding: 0 0 2pt 13pt;
+    border-left: 0.8pt solid #b9c4d4;
+    vertical-align: top;
+}
+
+.item__dot {
+    width: 7pt;
+    height: 7pt;
+    margin: 1.5pt 0 0 -16.5pt;
+    border: 1.2pt solid #8a9bb5;
+    border-radius: 4pt;
+    background-color: #ffffff;
+}
+
+.item__role {
+    font-weight: bold;
+    font-size: 9pt;
+    text-transform: uppercase;
+    margin: -9pt 0 2pt 0;
+}
+
+.item__meta {
+    font-style: italic;
+    color: #5a6a80;
+    margin-bottom: 3pt;
+}
+
+.item__line {
+    margin-bottom: 1.5pt;
+}
+
+/* Портфоліо ------------------------------------------------------------- */
+
+/*
+ | Ширина задана блоку, а не таблицям: dompdf ігнорує width у таблиці
+ | й розтягує її на всю доступну ширину, не враховуючи padding-right
+ | батька. Тому обмежувати треба саме контейнер.
+ */
+.portfolio {
+    page-break-before: always;
+    width: 551pt;
+    margin-left: 22pt;
+    padding-top: 20pt;
+}
+
+.portfolio__title {
+    font-size: 16pt;
+    letter-spacing: 7pt;
+    text-align: center;
+    padding-bottom: 14pt;
+}
+
+.project {
+    width: 540pt;
+    margin: 6pt 0 13pt 0;
+    page-break-inside: avoid;
+}
+
+.project__text {
+    width: 275pt;
+    background-color: #dae5f5;
+    padding: 8pt 10pt;
+    text-align: justify;
+    vertical-align: top;
+}
+
+.project__text p {
+    margin-bottom: 4pt;
+}
+
+.project__side {
+    width: 90pt;
+    padding: 6pt 8pt;
+    vertical-align: top;
+}
+
+.project__name {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 5pt;
+}
+
+.project__stack {
+    color: #33404f;
+}
+
+.project__media {
+    width: 130pt;
+    padding: 6pt 0;
+    vertical-align: top;
+    text-align: right;
+}
+
+.project__media--left {
+    text-align: left;
+}
+
+/*
+ | Порожня колонка-відступ: dompdf тягне таблицю до правого краю сторінки
+ | незалежно від width і padding батька, тому поле праворуч доводиться
+ | робити окремою коміркою. Ширини колонок рахуються без box-sizing:
+ | реальна ширина комірки = width + padding, сума має дорівнювати 551pt.
+ */
+.project__gutter {
+    width: 20pt;
+}
+
+.project__media img {
+    width: 128pt;
+}

@@ -7,44 +7,107 @@ use Dompdf\Options;
 
 class Pdf
 {
-    private Dompdf $dompdf;
-    private string $file_name;
+    /** Ліва смуга шаблону modern: ширина, висота A4 і колір у частках. */
+    private const RAIL_WIDTH = 190.0;
+    private const RAIL_HEIGHT = 842.0;
+    private const RAIL_COLOR = [0.855, 0.898, 0.961];
 
-    
-    public function __construct()
+    private Dompdf $dompdf;
+    private Html $html;
+    private string $template;
+    private string $fileName;
+
+    public function __construct(?string $template = null, ?string $fileName = null)
+    {
+        $this->html = new Html($template);
+        $this->template = $this->html->template();
+
+        $this->dompdf = $this->makeDompdf();
+
+        $this->fileName = $fileName ?: sprintf(
+            '%s/pdf/CV_%s_%s.pdf',
+            dirname(__DIR__),
+            $this->template,
+            date('d.m.y_His')
+        );
+    }
+
+    private function makeDompdf(): Dompdf
     {
         $options = new Options();
         $options->setChroot(__DIR__);
-        
-        $this->dompdf = new Dompdf($options);
-        $this->dompdf->setPaper('A4');
-    
-        $this->file_name = dirname(__DIR__) . '/pdf/CV_' . date('d.m.y') . '.pdf';
+        $options->setIsRemoteEnabled(false);
+        $options->setDefaultFont('DejaVu Sans');
+
+        $dompdf = new Dompdf($options);
+        $dompdf->setPaper('A4');
+
+        return $dompdf;
     }
-    
-    private function render()
-    {
-        $html = (new Html())->render();
-        $this->dompdf->loadHtml($html);
-        $this->dompdf->render();
-    }
-    
-    private function save()
-    {
-        file_put_contents($this->file_name, $this->dompdf->output());
-    }
-    
-    private function copy()
-    {
-        exec('cp ' . $this->file_name . ' ~/Desktop/FOP/PDF');
-    }
-    
-    public function run()
+
+    public function run(): string
     {
         $this->render();
         $this->save();
-//        $this->copy();
-    
-        exit(0);
+
+        return $this->fileName;
+    }
+
+    private function render(): void
+    {
+        $this->dompdf->loadHtml($this->html->render());
+        $this->dompdf->render();
+
+        if ($this->template === 'modern') {
+            $this->paintRail($this->resumePageCount());
+        }
+    }
+
+    /**
+     * Скільки сторінок займає резюме без портфоліо. Вміст до портфоліо
+     * в обох рендерах однаковий, тому і розбиття на сторінки однакове.
+     */
+    private function resumePageCount(): int
+    {
+        $probe = $this->makeDompdf();
+        $probe->loadHtml($this->html->render(false));
+        $probe->render();
+
+        return $probe->getCanvas()->get_page_count();
+    }
+
+    /**
+     * Домальовує ліву смугу на сторінках резюме з другої по $lastPage.
+     * Першу сторінку малює сам сайдбар, портфоліо смуги не отримує.
+     *
+     * Викликати тільки після render(): page_script у dompdf не відкладає
+     * колбек, а одразу проходить уже створеними сторінками.
+     */
+    private function paintRail(int $lastPage): void
+    {
+        if ($lastPage < 2) {
+            return;
+        }
+
+        $this->dompdf->getCanvas()->page_script(
+            function ($pageNumber, $pageCount, $canvas) use ($lastPage) {
+                if ($pageNumber < 2 || $pageNumber > $lastPage) {
+                    return;
+                }
+
+                $canvas->filled_rectangle(0, 0, self::RAIL_WIDTH, self::RAIL_HEIGHT, self::RAIL_COLOR);
+            }
+        );
+    }
+
+    private function save(): void
+    {
+        $dir = dirname($this->fileName);
+
+        if (! is_dir($dir)) {
+            mkdir($dir, 0775, true);
+        }
+
+        file_put_contents($this->fileName, $this->dompdf->output());
     }
 }
