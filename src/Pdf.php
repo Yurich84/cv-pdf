@@ -30,10 +30,10 @@ class Pdf
             '%s/pdf/CV_%s_%s%s.pdf',
             dirname(__DIR__),
             $this->template,
+            date('d.m.y_His'),
             // Версію в імені згадуємо, тільки якщо вона не типова:
             // інакше кожен файл тягне зайве «_default».
-            $this->version === Cv::DEFAULT ? '' : $this->version . '_',
-            date('d.m.y_His')
+            $this->version === Cv::DEFAULT ? '' : '_' . $this->version
         );
     }
 

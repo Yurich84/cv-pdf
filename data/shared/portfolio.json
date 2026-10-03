@@ -21,6 +21,7 @@
         "image": "portfolio/porsche.png",
         "stack": [
             "Laravel",
+            "Yii2",
             "VueJS",
             "Vuex",
             "Docker",
@@ -74,7 +75,7 @@
         "title": "TechPort",
         "image": "portfolio/techport.png",
         "stack": [
-            "Laravel",
+            "Symfony",
             "VueJS",
             "Vuex",
             "Google Maps API"

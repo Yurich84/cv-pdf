@@ -36,7 +36,7 @@ php pdf.php --help                    # список шаблонів і вер�
 
 Скрипт друкує шлях до створеного файлу. За замовчуванням це
 `pdf/CV_<шаблон>_<дата>_<час>.pdf` (для не-типової версії —
-`CV_<шаблон>_<версія>_<дата>_<час>.pdf`); тека `pdf/` у `.gitignore`.
+`CV_<шаблон>_<дата>_<час>_<версія>.pdf`); тека `pdf/` у `.gitignore`.
 
 ## Прев'ю в браузері
 
@@ -73,22 +73,20 @@ php -S localhost:8000
 | Ключ | Що містить |
 |---|---|
 | `label` | Опис версії для `--help`; більше ніде не виводиться |
-| `profile` | `name`, `title`, `photo`, `location`, `email`, `phone`, `summary`, `shortSummary` |
+| `profile` | `name`, `title`, `photo`, `location`, `email`, `phone`, `summary` |
 | `contacts` | Рядки сайдбару: `icon`, `text`, `url` |
 | `socials` | Те саме плюс `label` — назва посилання в `classic` і в сайдбарі `modern` |
 
 `icon` — ім'я PNG з `src/resources/img/icons/` без розширення (`phone`, `github`…)
 або текстовий символ з DejaVu Sans, якщо такого файлу немає. Іконки взято з
 [Font Awesome Free](https://fontawesome.com/license/free) (CC BY 4.0).
-| `experience` | `role`, `company`, `location`, `from`, `to`, `summary`, `items[]`, `shortSummary`, `shortItems[]` |
+| `experience` | `role`, `company`, `location`, `from`, `to`, `summary`, `items[]` |
 | `education` | `degree`, `school`, `location`, `from`, `to` |
 | `languages` | `name`, `level` |
 | `skills` | `top[]` — головний стек, `groups{}` — згруповані навички, `familiar[]` |
 
-`short*`-поля — стислі тексти для `modern`, щоб резюме вміщалося на одну
-сторінку; `classic` завжди бере повні. Якщо в записі досвіду є хоч одне
-`short*`-поле, `modern` бере коротку пару `shortSummary` + `shortItems`
-цілком, інакше — повні `summary` + `items`.
+Обидва шаблони виводять тексти як є. Стислі формулювання, щоб `modern`
+вміщався на одну сторінку, лежать в окремій версії `data/short.json`.
 
 Портфоліо (`data/shared/portfolio.json`) — масив проєктів із ключами
 `title`, `image`, `stack[]`, `text[]`. Файл один на всі версії, бо проєкти
@@ -107,8 +105,10 @@ dompdf малює порожнім прямокутником.
 
 ## Версії даних
 
-У репозиторії один набір — `data/default.json`, і саме його правлять під
-конкретну вакансію. Якщо треба тримати кілька паралельно, версія — це просто
+Основний набір — `data/default.json`, і саме його правлять під конкретну
+вакансію. Поруч лежить `data/short.json` — та сама версія зі стислими текстами
+(`php pdf.php modern --data=short`). Це копія, а не посилання: правки в
+`default.json` туди самі не потрапляють. Якщо треба тримати кілька паралельно, версія — це просто
 ще один файл у `data/`:
 
 ```bash
