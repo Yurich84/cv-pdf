@@ -12,8 +12,8 @@
             "WebSockets"
         ],
         "text": [
-            "Developed an Accounts Receivable dashboard for a company which improve financial management. Implemented the capability to synchronize data between healthcare providers and insurance companies using a specialized protocol for the transfer of financial and medical information (837 and 835 files).",
-            "Through collaborative teamwork, successfully implemented a new claims system and improved interaction between clients, caregivers, and companies."
+            "Built an Accounts Receivable dashboard that gives the finance team a clear, real-time view of outstanding payments. Implemented data exchange between healthcare providers and insurance companies over the X12 EDI standard (837 claim and 835 remittance files).",
+            "Together with the team, delivered a new claims-processing system that streamlined communication between clients, caregivers and the company."
         ]
     },
     {
@@ -27,8 +27,8 @@
             "Sendgrid"
         ],
         "text": [
-            "For the Swiss network of Porsche showrooms, I developed a CRM system that enhances customer relations. From a tablet or computer, sales representatives can generate an individualized brochure for each client within minutes. The system includes a mailing and activity tracking feature on the brochure page, providing better insights into customer needs.",
-            "Many routine processes were automated, leading to increased sales and reduced workload for managers. I independently developed this system from scratch, being involved in the entire development process from ideation to release, and it took three months to complete. To meet the specified timeframe, I utilized a CRM framework that I had personally developed."
+            "Single-handedly designed and built a CRM for the Swiss network of Porsche showrooms. From a tablet or desktop, sales consultants generate a personalised digital brochure for each client in minutes; built-in mailing and activity tracking show how clients engage with it.",
+            "Owned the full cycle from concept to release and shipped in three months, building on a CRM framework I had developed earlier. Automating routine work reduced managers' workload and contributed to higher sales."
         ]
     },
     {
@@ -46,9 +46,9 @@
             "Sendgrid"
         ],
         "text": [
-            "This platform is for searching for vacancies and candidates. It not only automates unique recruiting processes but also allows candidates to participate in the creation of their resumes and search for vacancies.",
-            "This work was entrusted to me and after some time I became a team lead in this direction. I gathered the team, set up the gitflow, CI/CD. Everything was built in docker, and even deployed with docker images on Digital Ocean. This was done in order to be able to flexibly scale it.",
-            "We worked with Postgres and I set up full-text search there, added dictionaries, implemented fuzzy search, optimized and normalized the database. All this improved the matching of vacancies for candidates, which led to an increase in visitors to the site. Monthly attendance reached 100,000+."
+            "Recruitment platform that automates the company's recruiting workflows and lets candidates build their own CVs and search for vacancies.",
+            "Grew from developer to team lead of the product: assembled the team, introduced Git Flow and CI/CD, containerised the stack with Docker and deployed it as images on DigitalOcean for flexible scaling.",
+            "Implemented PostgreSQL full-text search with custom dictionaries and fuzzy matching, and optimised the database schema. Better candidate–vacancy matching drove traffic to 100,000+ monthly visits."
         ]
     },
     {
@@ -65,9 +65,9 @@
             "MS Graph API"
         ],
         "text": [
-            "It's an app that allows people to lead a healthier lifestyle and choose healthier food. This project was on hold for several years, and when we started it again, the first thing we had to do was update all the frameworks and libraries. Eventually, we switched to Vue3 and began to use the composition API.",
-            "We use MongoDB as a core DB because the data we took from an external source came in JSON and had a complex structure. A separate CRM system was developed for coaches, which interacted with a mobile application and an admin panel.",
-            "To enhance user engagement, gamification elements were introduced. This involved creating a points accrual system, adding more interactive prompts, and developing several thematic browser games. As a result, the onboarding process was improved, and the overall user experience of the application was enhanced."
+            "Healthy-lifestyle app that helps users make better food choices. Revived the product after a multi-year pause: upgraded the entire framework and library stack and migrated the frontend to Vue 3 with the Composition API.",
+            "Chose MongoDB as the core database to handle complex JSON from an external data provider, and built a separate CRM for coaches integrated with the mobile app and admin panel.",
+            "Introduced gamification — a points system, interactive prompts and themed browser games — which improved onboarding and user engagement."
         ]
     },
     {
@@ -80,8 +80,8 @@
             "Google Maps API"
         ],
         "text": [
-            "For a logistics company specializing in 24/7 delivery of construction materials, I developed a schedule of duties. Due to the dynamic nature of shifts, using an off-the-shelf calendar library was not feasible, necessitating the creation of a custom solution. The calendar was divided into non-standard shifts and had multiple views (day, week, month). The dashboard displayed information about who was scheduled to load, on which vehicle, and showed the status of each vehicle at a specific time and shift.",
-            "In addition, a map feature was incorporated, allowing real-time tracking of each specific vehicle's location. This eliminated the need to individually contact each driver to inquire about their whereabouts and status, as everything could be easily monitored through the admin interface."
+            "Dispatch scheduling system for a logistics company delivering construction materials 24/7. Built a custom shift calendar, since off-the-shelf libraries could not handle non-standard dynamic shifts, with day, week and month views showing who is loading, on which vehicle, and each vehicle's status per shift.",
+            "Added a live map with real-time vehicle tracking, so dispatchers monitor the fleet from the admin panel instead of calling every driver."
         ]
     }
 ]

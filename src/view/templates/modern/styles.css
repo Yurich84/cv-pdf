@@ -246,11 +246,11 @@ table {
     font-size: 16pt;
     letter-spacing: 7pt;
     text-align: center;
-    padding-bottom: 8pt;
+    padding-bottom: 6pt;
 }
 
 .project {
-    margin-bottom: 16pt;
+    margin-bottom: 10pt;
     page-break-inside: avoid;
 }
 
@@ -259,10 +259,10 @@ table {
     font-weight: bold;
     letter-spacing: 1pt;
     color: #3b3b3c;
-    padding: 0 0 4pt 8pt;
+    padding: 0 0 3pt 8pt;
     border-left: 3pt solid #8a9bb5;
     border-bottom: 0.8pt solid #b9c4d4;
-    margin: 0 20pt 8pt 0;
+    margin: 0 20pt 6pt 0;
 }
 
 .project__body {
@@ -271,27 +271,44 @@ table {
 
 /*
  | Ширини колонок рахуються без box-sizing: реальна ширина комірки =
- | width + padding. 170 + 14 + 347 + 20 = 551pt — ширина .portfolio.
+ | width + padding. 140 + 14 + 377 + 20 = 551pt — ширина .portfolio.
+ | Картинку зменшено, щоб усі проєкти вміщалися на одну сторінку:
+ | висоту блоку задають високі скриншоти (Porsche, SeekingSimple).
  */
 .project__media {
-    width: 170pt;
+    width: 140pt;
     padding-right: 14pt;
     vertical-align: top;
 }
 
+.project__media--right {
+    padding-right: 0;
+    padding-left: 14pt;
+}
+
 .project__media img {
-    width: 170pt;
+    width: 140pt;
     border: 0.8pt solid #dae5f5;
 }
 
 .project__text {
-    width: 347pt;
+    width: 377pt;
     text-align: justify;
     vertical-align: top;
 }
 
 .project__text p {
-    margin-bottom: 4pt;
+    margin-bottom: 3pt;
+}
+
+.project__stack {
+    color: #5a6a80;
+    font-size: 7.5pt;
+}
+
+.project__stack b {
+    font-size: 7.5pt;
+    color: #3b3b3c;
 }
 
 /*

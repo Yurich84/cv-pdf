@@ -130,16 +130,28 @@
         @foreach($portfolio as $project)
             <div class="project">
                 <div class="project__title">{{ $project['title'] }}</div>
+                {{-- Картинка чергується ліворуч/праворуч: зигзаг читається легше за стовпчик однакових рядків --}}
+                @php($mediaRight = $loop->odd === false)
                 <table class="project__body">
                     <tr>
-                        <td class="project__media">
-                            @if($project['image'])<img src="{{ $project['image'] }}" alt="">@endif
-                        </td>
+                        @unless($mediaRight)
+                            <td class="project__media">
+                                @if($project['image'])<img src="{{ $project['image'] }}" alt="">@endif
+                            </td>
+                        @endunless
                         <td class="project__text">
                             @foreach($project['text'] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
+                            @if($project['stack'])
+                                <div class="project__stack"><b>Stack:</b> {{ implode(', ', $project['stack']) }}</div>
+                            @endif
                         </td>
+                        @if($mediaRight)
+                            <td class="project__media project__media--right">
+                                @if($project['image'])<img src="{{ $project['image'] }}" alt="">@endif
+                            </td>
+                        @endif
                         <td class="project__gutter"></td>
                     </tr>
                 </table>
