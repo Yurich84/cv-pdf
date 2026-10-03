@@ -11,8 +11,16 @@
  |      сама переноситься на наступні сторінки.
  * ------------------------------------------------------------------------ */
 
+/*
+ | Верхнє поле потрібне сторінкам після першої, інакше текст прилипає
+ | до обрізу аркуша. `@page :first` тут не допоможе: dompdf бере верх
+ | контенту з базового @page для всіх сторінок. Тому поле спільне,
+ | а шапку, сайдбар і відступ основної колонки на першій сторінці
+ | піднято на ті ж 24pt. !important — бо інакше поле обнуляє скидання
+ | margin у `*` нижче.
+ */
 @page {
-    margin: 0;
+    margin: 24pt 0 0 0 !important;
 }
 
 * {
@@ -41,7 +49,7 @@ table {
 
 .header {
     position: absolute;
-    top: 0;
+    top: -24pt;
     left: 0;
     width: 595pt;
     height: 170pt;
@@ -87,18 +95,20 @@ table {
  */
 .sidebar {
     position: absolute;
-    top: 170pt;
+    top: 146pt;
     left: 0;
     /* dompdf не застосовує box-sizing до абсолютів: 156 + 20 + 14 = 190pt */
     width: 156pt;
     height: 690pt;
-    padding: 16pt 14pt 0 20pt;
+    padding: 10pt 14pt 0 20pt;
     background-color: #dae5f5;
 }
 
 .content {
     margin-left: 190pt;
-    padding: 170pt 26pt 12pt 16pt;
+    /* 146 + поле сторінки 24 = низ шапки, ще 10pt — як padding сайдбару,
+       щоб Summary і Contacts стояли на одній висоті */
+    padding: 156pt 26pt 12pt 16pt;
 }
 
 /* Заголовки секцій ------------------------------------------------------ */
@@ -130,10 +140,15 @@ table {
 /* Сайдбар --------------------------------------------------------------- */
 
 .contact__icon {
-    width: 13pt;
+    width: 15pt;
     color: #4a5a72;
     vertical-align: top;
     padding-bottom: 3pt;
+}
+
+.contact__icon img {
+    height: 9pt;
+    margin-top: 1.5pt;
 }
 
 .contact__text {
@@ -172,7 +187,7 @@ table {
 
 .item {
     width: 100%;
-    margin-bottom: 8pt;
+    margin-bottom: 5pt;
 }
 
 .item__date {
@@ -211,7 +226,7 @@ table {
 }
 
 .item__line {
-    margin-bottom: 1.5pt;
+    margin-bottom: 1pt;
 }
 
 /* Портфоліо ------------------------------------------------------------- */
@@ -225,26 +240,52 @@ table {
     page-break-before: always;
     width: 551pt;
     margin-left: 22pt;
-    padding-top: 20pt;
 }
 
 .portfolio__title {
     font-size: 16pt;
     letter-spacing: 7pt;
     text-align: center;
-    padding-bottom: 14pt;
+    padding-bottom: 8pt;
 }
 
 .project {
-    width: 540pt;
-    margin: 6pt 0 13pt 0;
+    margin-bottom: 16pt;
     page-break-inside: avoid;
 }
 
+.project__title {
+    font-size: 12pt;
+    font-weight: bold;
+    letter-spacing: 1pt;
+    color: #3b3b3c;
+    padding: 0 0 4pt 8pt;
+    border-left: 3pt solid #8a9bb5;
+    border-bottom: 0.8pt solid #b9c4d4;
+    margin: 0 20pt 8pt 0;
+}
+
+.project__body {
+    width: 551pt;
+}
+
+/*
+ | Ширини колонок рахуються без box-sizing: реальна ширина комірки =
+ | width + padding. 170 + 14 + 347 + 20 = 551pt — ширина .portfolio.
+ */
+.project__media {
+    width: 170pt;
+    padding-right: 14pt;
+    vertical-align: top;
+}
+
+.project__media img {
+    width: 170pt;
+    border: 0.8pt solid #dae5f5;
+}
+
 .project__text {
-    width: 275pt;
-    background-color: #dae5f5;
-    padding: 8pt 10pt;
+    width: 347pt;
     text-align: justify;
     vertical-align: top;
 }
@@ -253,43 +294,11 @@ table {
     margin-bottom: 4pt;
 }
 
-.project__side {
-    width: 90pt;
-    padding: 6pt 8pt;
-    vertical-align: top;
-}
-
-.project__name {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-bottom: 5pt;
-}
-
-.project__stack {
-    color: #33404f;
-}
-
-.project__media {
-    width: 130pt;
-    padding: 6pt 0;
-    vertical-align: top;
-    text-align: right;
-}
-
-.project__media--left {
-    text-align: left;
-}
-
 /*
  | Порожня колонка-відступ: dompdf тягне таблицю до правого краю сторінки
  | незалежно від width і padding батька, тому поле праворуч доводиться
- | робити окремою коміркою. Ширини колонок рахуються без box-sizing:
- | реальна ширина комірки = width + padding, сума має дорівнювати 551pt.
+ | робити окремою коміркою.
  */
 .project__gutter {
     width: 20pt;
-}
-
-.project__media img {
-    width: 128pt;
 }

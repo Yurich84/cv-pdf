@@ -75,7 +75,11 @@ php -S localhost:8000
 | `label` | Опис версії для `--help`; більше ніде не виводиться |
 | `profile` | `name`, `title`, `photo`, `location`, `email`, `phone`, `summary` |
 | `contacts` | Рядки сайдбару: `icon`, `text`, `url` |
-| `socials` | Те саме плюс `label` — коротка назва для однорядкової шапки `classic` |
+| `socials` | Те саме плюс `label` — назва посилання в `classic` і в сайдбарі `modern` |
+
+`icon` — ім'я PNG з `src/resources/img/icons/` без розширення (`phone`, `github`…)
+або текстовий символ з DejaVu Sans, якщо такого файлу немає. Іконки взято з
+[Font Awesome Free](https://fontawesome.com/license/free) (CC BY 4.0).
 | `experience` | `role`, `company`, `location`, `from`, `to`, `summary`, `items[]` |
 | `education` | `degree`, `school`, `location`, `from`, `to` |
 | `languages` | `name`, `level` |

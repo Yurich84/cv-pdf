@@ -23,13 +23,21 @@
         <div class="section__rule"></div>
         <table>
             @foreach(array_merge($contacts, $socials) as $line)
+                {{-- У соцмереж показуємо назву, як у classic, а не голу адресу --}}
+                @php($text = ($line['label'] ?? '') ?: $line['text'])
                 <tr>
-                    <td class="contact__icon">{{ $line['icon'] }}</td>
+                    <td class="contact__icon">
+                        @if($line['iconImage'])
+                            <img src="{{ $line['iconImage'] }}" alt="">
+                        @else
+                            {{ $line['icon'] }}
+                        @endif
+                    </td>
                     <td class="contact__text">
                         @if(!empty($line['url']))
-                            <a href="{{ $line['url'] }}">{{ $line['text'] }}</a>
+                            <a href="{{ $line['url'] }}">{{ $text }}</a>
                         @else
-                            {{ $line['text'] }}
+                            {{ $text }}
                         @endif
                     </td>
                 </tr>
@@ -119,40 +127,23 @@
     <div class="portfolio">
         <div class="portfolio__title">PORTFOLIO</div>
 
-        @foreach($portfolio as $index => $project)
-            <table class="project">
-                <tr>
-                    @if($index % 2 === 0)
-                        <td class="project__text">
-                            @foreach($project['text'] as $paragraph)
-                                <p>{{ $paragraph }}</p>
-                            @endforeach
-                        </td>
-                        <td class="project__side">
-                            <div class="project__name">{{ $project['title'] }}</div>
-                            <div class="project__stack">{{ implode(', ', $project['stack']) }}</div>
-                        </td>
+        @foreach($portfolio as $project)
+            <div class="project">
+                <div class="project__title">{{ $project['title'] }}</div>
+                <table class="project__body">
+                    <tr>
                         <td class="project__media">
                             @if($project['image'])<img src="{{ $project['image'] }}" alt="">@endif
                         </td>
-                        <td class="project__gutter"></td>
-                    @else
-                        <td class="project__media project__media--left">
-                            @if($project['image'])<img src="{{ $project['image'] }}" alt="">@endif
-                        </td>
-                        <td class="project__side">
-                            <div class="project__name">{{ $project['title'] }}</div>
-                            <div class="project__stack">{{ implode(', ', $project['stack']) }}</div>
-                        </td>
                         <td class="project__text">
                             @foreach($project['text'] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
                         </td>
                         <td class="project__gutter"></td>
-                    @endif
-                </tr>
-            </table>
+                    </tr>
+                </table>
+            </div>
         @endforeach
     </div>
 @endif

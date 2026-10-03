@@ -64,7 +64,8 @@ class Cv
     ];
 
     /**
-     * icon — символ з DejaVu Sans (BMP). Інші гліфи, зокрема емодзі,
+     * icon — ім'я PNG з resources/img/icons без розширення (phone, github…)
+     * або символ з DejaVu Sans (BMP). Інші гліфи, зокрема емодзі,
      * dompdf не рендерить: у PDF буде порожній прямокутник.
      */
     private const CONTACT_DEFAULTS = [

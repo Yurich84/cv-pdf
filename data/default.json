@@ -11,47 +11,47 @@
     },
     "contacts": [
         {
-            "icon": "☎",
+            "icon": "phone",
             "text": "+34 613 46 46 99",
             "url": "tel:+34613464699"
         },
         {
-            "icon": "✉",
+            "icon": "envelope",
             "text": "Yurich84@gmail.com",
             "url": "mailto:Yurich84@gmail.com"
         },
         {
-            "icon": "✈",
+            "icon": "telegram",
             "text": "Yurich84",
             "url": "https://t.me/Yurich84"
         },
         {
-            "icon": "⌂",
+            "icon": "location-dot",
             "text": "Spain, Santa-Cruz-de-Tenerife",
             "url": null
         }
     ],
     "socials": [
         {
-            "icon": "●",
+            "icon": "linkedin",
             "label": "LinkedIn",
             "text": "linkedin.com/in/yuriy-timchuk",
             "url": "https://linkedin.com/in/yuriy-timchuk"
         },
         {
-            "icon": "●",
+            "icon": "globe",
             "label": "Web-site",
             "text": "yurich84.github.io",
             "url": "https://yurich84.github.io"
         },
         {
-            "icon": "●",
+            "icon": "github",
             "label": "Github",
             "text": "github.com/Yurich84",
             "url": "https://github.com/Yurich84"
         },
         {
-            "icon": "●",
+            "icon": "dev",
             "label": "Dev.to",
             "text": "dev.to/yurich84",
             "url": "https://dev.to/yurich84"

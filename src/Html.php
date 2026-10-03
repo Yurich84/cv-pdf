@@ -38,8 +38,8 @@ class Html
             'profile' => $profile,
             'photo' => $this->image($profile['photo']),
             'summary' => $profile['summary'],
-            'contacts' => $this->cv->contacts(),
-            'socials' => $this->cv->socials(),
+            'contacts' => $this->withIcons($this->cv->contacts()),
+            'socials' => $this->withIcons($this->cv->socials()),
             'experience' => $this->cv->experience(),
             'education' => $this->cv->education(),
             'languages' => $this->cv->languages(),
@@ -91,6 +91,25 @@ class Html
         };
 
         return 'data:' . $mime . ';base64,' . base64_encode(file_get_contents($path));
+    }
+
+    /**
+     * Додає iconImage — data URI іконки, якщо icon названо ім'ям файлу
+     * з img/icons. Інакше iconImage порожній і шаблон виводить icon як
+     * текстовий гліф. Ім'я звіряється з патерном, бо потрапляє у шлях.
+     *
+     * Іконки — PNG, а не SVG: на PHP 8.5 getimagesize() віддає розміри
+     * SVG без типу, і dompdf 2.0 такий файл відкидає як битий.
+     */
+    private function withIcons(array $lines): array
+    {
+        return array_map(function (array $line) {
+            $line['iconImage'] = preg_match('/^[a-z0-9-]+$/', $line['icon'])
+                ? $this->image('icons/' . $line['icon'] . '.png')
+                : '';
+
+            return $line;
+        }, $lines);
     }
 
     private function portfolio(): array
