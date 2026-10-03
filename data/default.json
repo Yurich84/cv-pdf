@@ -7,7 +7,8 @@
         "location": "Santa Cruz de Tenerife, Canary Islands 38006, Spain",
         "email": "Yurich84@gmail.com",
         "phone": "+34 613 46 46 99",
-        "summary": "Full-stack engineer and tech lead with 10+ years of designing, building and evolving production systems on Laravel and Vue. I look at the system around a feature, not only at the feature: how it is structured, tested, deployed, monitored and maintained by the team. I automate everything that can be automated — deployments, routine engineering work, quality gates — so the whole team moves faster, not just me. With legacy I prefer incremental migration over rewrites: no code freeze, no big bang, development never stops. I work with AI the same way I work with any external dependency — structured output, schema validation and a controlled pipeline instead of trusting a model to behave. Comfortable owning a product end to end, from database design and architecture to CI/CD, production troubleshooting and the people doing the work."
+        "summary": "Full-stack engineer and tech lead with 10+ years of designing, building and evolving production systems on Laravel and Vue. I look at the system around a feature, not only at the feature: how it is structured, tested, deployed, monitored and maintained by the team. I automate everything that can be automated — deployments, routine engineering work, quality gates — so the whole team moves faster, not just me. With legacy I prefer incremental migration over rewrites: no code freeze, no big bang, development never stops. I work with AI the same way I work with any external dependency — structured output, schema validation and a controlled pipeline instead of trusting a model to behave. Comfortable owning a product end to end, from database design and architecture to CI/CD, production troubleshooting and the people doing the work.",
+        "shortSummary": "Full-stack engineer and tech lead with 10+ years of building production systems on Laravel and Vue. I own products end to end — architecture, CI/CD, AI pipelines and the team — and automate everything that slows people down."
     },
     "contacts": [
         {
@@ -73,6 +74,12 @@
                 "Own the QA strategy: test coverage matrix for business-critical flows",
                 "Drive the gradual Vue 2 to Vue 3 migration with the Strangler Fig approach, without a code freeze",
                 "Mentor the team, improve workflows and processes, and facilitate meetings that end with decisions"
+            ],
+            "shortItems": [
+                "Own architecture, release strategy and production health",
+                "Run AI infrastructure: vLLM, LiteLLM, OCR pipelines, AI matching",
+                "Agent workflows and code standards: routine work 3–4× faster",
+                "Vue 2 → Vue 3 migration without a code freeze; team mentoring"
             ]
         },
         {
@@ -88,6 +95,11 @@
                 "Owned the engineering setup of the project: CI/CD, git-flow, testing, code style and security",
                 "Integrated and supported external services — Mailgun, MS Graph — together with queued jobs and scheduled tasks",
                 "Worked with the team on a new claims system and on the interaction between clients, caregivers and companies"
+            ],
+            "shortItems": [
+                "Healthcare CRM: claims, invoicing, Accounts Receivable domain",
+                "Provider–insurer data exchange via 837 / 835 standards",
+                "Owned CI/CD, git-flow, testing, code style and security"
             ]
         },
         {
@@ -103,6 +115,10 @@
                 "Gathered and interviewed the team, mentored developers and consulted on technical decisions",
                 "Delivered a standalone CRM for a network of Porsche showrooms in Switzerland — from the owner's idea to structure, UX and release",
                 "Contributed to open source"
+            ],
+            "shortItems": [
+                "Led a Rocken service (top-3 Swiss job site), zero-downtime CI/CD",
+                "Built the team; delivered a CRM for Porsche showrooms"
             ]
         },
         {
@@ -112,6 +128,7 @@
             "from": "Aug 2019",
             "to": "Apr 2020",
             "summary": "Developed a large CRM and a PWA. Delivered an SPA built around third-party APIs, and was responsible for its frontend architecture while working closely with the team.",
+            "shortSummary": "Large CRM, PWA and API-driven SPA; owned the frontend architecture.",
             "items": []
         },
         {
@@ -120,6 +137,7 @@
             "location": "Remote",
             "from": "Apr 2013",
             "to": "Jul 2019",
+            "shortSummary": "Online stores and business sites end to end, incl. payment integrations.",
             "items": [
                 "Built and supported online stores on various CMS and PHP frameworks, from small catalogues to shops with thousands of products",
                 "Responsible for the full cycle of each project: requirements, data structure, backend, frontend, deployment and further support",

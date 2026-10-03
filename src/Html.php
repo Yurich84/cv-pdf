@@ -40,7 +40,7 @@ class Html
             'summary' => $profile['summary'],
             'contacts' => $this->withIcons($this->cv->contacts()),
             'socials' => $this->withIcons($this->cv->socials()),
-            'experience' => $this->cv->experience(),
+            'experience' => $this->withDuration($this->cv->experience()),
             'education' => $this->cv->education(),
             'languages' => $this->cv->languages(),
             'portfolio' => $withPortfolio ? $this->portfolio() : [],
@@ -110,6 +110,36 @@ class Html
 
             return $line;
         }, $lines);
+    }
+
+    /**
+     * Додає duration — скільки тривала робота, у вигляді «1y 6m».
+     * Обидва крайні місяці рахуються включно, як на LinkedIn;
+     * `to` = Present означає поточний місяць. Дату, яку не вдалося
+     * розібрати як «Mar 2024», пропускаємо: duration буде порожнім.
+     */
+    private function withDuration(array $items): array
+    {
+        return array_map(static function (array $item) {
+            $item['duration'] = '';
+
+            $from = \DateTimeImmutable::createFromFormat('!M Y', $item['from']);
+            $to = strcasecmp($item['to'], 'Present') === 0
+                ? new \DateTimeImmutable('first day of this month midnight')
+                : \DateTimeImmutable::createFromFormat('!M Y', $item['to']);
+
+            if ($from && $to && $from <= $to) {
+                $diff = $from->diff($to);
+                $months = $diff->y * 12 + $diff->m + 1;
+                $parts = array_filter([
+                    intdiv($months, 12) ? intdiv($months, 12) . 'y' : '',
+                    $months % 12 ? $months % 12 . 'm' : '',
+                ]);
+                $item['duration'] = implode(' ', $parts);
+            }
+
+            return $item;
+        }, $items);
     }
 
     private function portfolio(): array

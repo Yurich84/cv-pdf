@@ -197,6 +197,12 @@ table {
     vertical-align: top;
 }
 
+.item__duration {
+    font-weight: normal;
+    color: #8a9bb5;
+    margin-top: 1pt;
+}
+
 .item__body {
     padding: 0 0 2pt 13pt;
     border-left: 0.8pt solid #b9c4d4;

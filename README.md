@@ -73,17 +73,22 @@ php -S localhost:8000
 | Ключ | Що містить |
 |---|---|
 | `label` | Опис версії для `--help`; більше ніде не виводиться |
-| `profile` | `name`, `title`, `photo`, `location`, `email`, `phone`, `summary` |
+| `profile` | `name`, `title`, `photo`, `location`, `email`, `phone`, `summary`, `shortSummary` |
 | `contacts` | Рядки сайдбару: `icon`, `text`, `url` |
 | `socials` | Те саме плюс `label` — назва посилання в `classic` і в сайдбарі `modern` |
 
 `icon` — ім'я PNG з `src/resources/img/icons/` без розширення (`phone`, `github`…)
 або текстовий символ з DejaVu Sans, якщо такого файлу немає. Іконки взято з
 [Font Awesome Free](https://fontawesome.com/license/free) (CC BY 4.0).
-| `experience` | `role`, `company`, `location`, `from`, `to`, `summary`, `items[]` |
+| `experience` | `role`, `company`, `location`, `from`, `to`, `summary`, `items[]`, `shortSummary`, `shortItems[]` |
 | `education` | `degree`, `school`, `location`, `from`, `to` |
 | `languages` | `name`, `level` |
 | `skills` | `top[]` — головний стек, `groups{}` — згруповані навички, `familiar[]` |
+
+`short*`-поля — стислі тексти для `modern`, щоб резюме вміщалося на одну
+сторінку; `classic` завжди бере повні. Якщо в записі досвіду є хоч одне
+`short*`-поле, `modern` бере коротку пару `shortSummary` + `shortItems`
+цілком, інакше — повні `summary` + `items`.
 
 Портфоліо (`data/shared/portfolio.json`) — масив проєктів із ключами
 `title`, `image`, `stack[]`, `text[]`. Файл один на всі версії, бо проєкти

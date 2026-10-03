@@ -38,6 +38,7 @@ class Cv
         'email' => '',
         'phone' => '',
         'summary' => '',
+        'shortSummary' => '',
     ];
 
     private const EXPERIENCE_DEFAULTS = [
@@ -48,6 +49,8 @@ class Cv
         'to' => '',
         'summary' => '',
         'items' => [],
+        'shortSummary' => '',
+        'shortItems' => [],
     ];
 
     private const EDUCATION_DEFAULTS = [

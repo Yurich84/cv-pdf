@@ -78,7 +78,8 @@
     <div class="section">
         <div class="section__title">Summary</div>
         <div class="section__rule"></div>
-        <div class="summary">{{ $summary }}</div>
+        {{-- modern бере короткі тексти, щоб резюме вміщалося на одну сторінку; без них — повні --}}
+        <div class="summary">{{ $profile['shortSummary'] ?: $summary }}</div>
     </div>
 
     <div class="section">
@@ -87,15 +88,21 @@
         @foreach($experience as $item)
             <table class="item">
                 <tr>
-                <td class="item__date">{{ $item['from'] }}<br>{{ $item['to'] }}</td>
+                <td class="item__date">{{ $item['from'] }}<br>{{ $item['to'] }}
+                    @if($item['duration'])<div class="item__duration">({{ $item['duration'] }})</div>@endif
+                </td>
                 <td class="item__body">
                     <div class="item__dot"></div>
                     <div class="item__role">{{ $item['role'] }}@if($item['company']), {{ $item['company'] }}@endif</div>
                     <div class="item__meta">{{ $item['location'] }}</div>
-                    @if(!empty($item['summary']))
-                        <div class="item__line">{{ $item['summary'] }}</div>
+                    {{-- Коротка пара summary+items замінює повну цілком, а не поле за полем:
+                         інакше до короткого summary домішувалися б повні пункти --}}
+                    @php($short = $item['shortSummary'] !== '' || $item['shortItems'] !== [])
+                    @php($itemSummary = $short ? $item['shortSummary'] : $item['summary'])
+                    @if($itemSummary !== '')
+                        <div class="item__line">{{ $itemSummary }}</div>
                     @endif
-                    @foreach($item['items'] as $line)
+                    @foreach($short ? $item['shortItems'] : $item['items'] as $line)
                         <div class="item__line">— {{ $line }}</div>
                     @endforeach
                 </td>
